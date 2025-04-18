@@ -47,7 +47,7 @@ public class SecurityConfig {
                 User.builder()
                         .username(clientId)
                         .password(passwordEncoder.encode(clientSecret))
-                        .roles("CLIENT")
+                        .roles("admin")
                         .build()
         );
     }
