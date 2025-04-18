@@ -1,0 +1,19 @@
+#Generar  jks
+keytool -genkeypair -alias oauthrsa -keyalg RSA -keysize 2048 -keystore oauthrsa.jks -validity 1095 -dname "CN=oauthrsa, OU=N/A, O=N/A, L=Tlalpan, ST=CDMX, C=MX"
+
+# Verificar jks
+keytool -v -list -keystore  oauthrsa.jks
+
+#Generar .pem
+keytool -exportcert -alias oauthrsa -keypass secret -keystore oauthrsa.jks -rfc -file oauthrsa.pem
+
+#Generar crt
+openssl x509 -outform der -in oauthrsa.pem -out oauthrsa.crt
+
+#Listar certificados de jks
+keytool -list -v -keystore oauthrsa.jks
+
+
+
+Password: oautrsa2025
+keytool -delete -alias oauthrsa -keystore .
