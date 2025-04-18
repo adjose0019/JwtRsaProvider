@@ -56,7 +56,7 @@ public class JksKeyLoader {
      */
     @PostConstruct
     public void init() {
-        log.info("JKS cargado desde: {}", jksPath);
+        log.debug("JKS cargado desde: {}", jksPath);
         try (InputStream is = getClass().getResourceAsStream(jksPath.replace("classpath:", "/"))) {
             keystore = KeyStore.getInstance("JKS");
             keystore.load(is, jksPassword.toCharArray());
